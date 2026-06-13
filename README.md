@@ -1,3 +1,5 @@
+![CI](https://github.com/jBenes/currency-converter/actions/workflows/ci.yml/badge.svg)
+
 # Currency Converter
 
 A client-side currency converter using live CZK exchange rates from the Czech National Bank.
@@ -5,8 +7,8 @@ A client-side currency converter using live CZK exchange rates from the Czech Na
 ## Setup
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 ## Credits
