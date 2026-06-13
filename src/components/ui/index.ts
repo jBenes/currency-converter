@@ -1,7 +1,6 @@
 export { Alert } from './Alert'
 export { Logo } from './Logo'
 export { Stack } from './Stack'
-export { Box } from './Box'
 export { Heading } from './Heading'
 export { Label } from './Label'
 export { Text } from './Text'

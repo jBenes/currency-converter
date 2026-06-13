@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import styled from 'styled-components'
-import { Stack, Text, Input, FieldRow, Box } from '@/components/ui'
+import { Stack, Text, Input, FieldRow } from '@/components/ui'
 import { SearchIcon } from '@/components/ui/icons'
 import { strings } from '@/config'
 import type { CurrencyCode, CurrencyInfo } from '../currencies'
@@ -74,11 +74,9 @@ export function RatesList({
           )
         })}
         {filtered.length === 0 && (
-          <Box py={5}>
-            <Text variant="subtle" align="center">
-              {strings.noMatch}
-            </Text>
-          </Box>
+          <Text variant="subtle" align="center">
+            {strings.noMatch}
+          </Text>
         )}
       </ListContainer>
     </Stack>
