@@ -2,6 +2,8 @@
 
 # Currency Converter
 
+[**www.currency-converter.eu**](https://www.currency-converter.eu/)
+
 A client-side currency converter using live CZK exchange rates from the Czech National Bank (CNB). Single-page app — fetches rates once on load, converts CZK to 29 currencies.
 
 ## Stack
