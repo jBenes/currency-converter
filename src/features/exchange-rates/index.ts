@@ -7,3 +7,4 @@ export {
   selectAvailableCurrencies,
 } from './currencies'
 export type { CurrencyInfo, CurrencyCode } from './currencies'
+export { RatesList, ConverterRegion } from './components'

@@ -8,3 +8,7 @@ A client-side currency converter using live CZK exchange rates from the Czech Na
 npm install
 npm run dev
 ```
+
+## Credits
+
+Flag SVGs sourced from [flag-icons](https://github.com/lipis/flag-icons) (public domain).

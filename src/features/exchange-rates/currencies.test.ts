@@ -8,9 +8,9 @@ vi.mock('@/lib/logger', () => ({
 }))
 
 const whitelist: CurrencyInfo[] = [
-  { code: 'EUR', name: 'Euro', symbol: '\u20AC', country: 'EU' },
-  { code: 'USD', name: 'US Dollar', symbol: '$', country: 'US' },
-  { code: 'GBP', name: 'British Pound', symbol: '\u00A3', country: 'UK' },
+  { code: 'EUR', name: 'Euro', symbol: '\u20AC', country: 'EU', flag: 'eu' },
+  { code: 'USD', name: 'US Dollar', symbol: '$', country: 'US', flag: 'us' },
+  { code: 'GBP', name: 'British Pound', symbol: '\u00A3', country: 'UK', flag: 'gb' },
 ]
 
 function makeRate(code: string): Rate {
