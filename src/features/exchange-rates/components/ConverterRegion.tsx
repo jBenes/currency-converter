@@ -3,13 +3,13 @@ import {
   Stack,
   Input,
   FieldRow,
-  FlagBadge,
   Label,
   StatusDot,
 } from '@/components/ui'
 import type { Theme } from '@/theme'
 import { formatRate } from '@/lib/money'
 import { strings } from '@/config'
+import { FlagBadge } from './FlagBadge'
 import type { CurrencyInfo } from '../currencies'
 import type { Rate } from '../types'
 

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { FlagBadge } from '@/components/ui'
+import { FlagBadge } from './FlagBadge'
 import { formatRate } from '@/lib/money'
 import type { CurrencyInfo } from '../currencies'
 import type { Rate } from '../types'
