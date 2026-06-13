@@ -1,2 +1,6 @@
-export { theme } from './theme'
-export type { Theme } from './theme'
+export { lightTheme, darkTheme } from './themes'
+export type { Theme } from './themes'
+export { ThemeProvider } from './ThemeProvider'
+export { useColorMode } from './useColorMode'
+export type { ColorMode } from './useColorMode'
+export { GlobalStyle } from './GlobalStyle'
