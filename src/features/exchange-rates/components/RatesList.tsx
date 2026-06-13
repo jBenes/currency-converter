@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import styled from 'styled-components'
-import { Stack, Text, Input, FieldRow } from '@/components/ui'
+import { Stack, Text, Input, FieldRow, Box } from '@/components/ui'
 import { SearchIcon } from '@/components/ui/icons'
 import { strings } from '@/config'
 import type { CurrencyCode, CurrencyInfo } from '../currencies'
@@ -17,11 +17,6 @@ const SearchIconWrapper = styled.span`
   color: ${({ theme }) => theme.colors.textMuted};
   display: inline-flex;
   flex-shrink: 0;
-`
-
-const EmptyMessage = styled(Text).attrs({ variant: 'subtle' as const })`
-  text-align: center;
-  padding: ${({ theme }) => theme.space[5]}px 0;
 `
 
 interface RatesListProps {
@@ -79,7 +74,11 @@ export function RatesList({
           )
         })}
         {filtered.length === 0 && (
-          <EmptyMessage>{strings.noMatch}</EmptyMessage>
+          <Box py={5}>
+            <Text variant="subtle" align="center">
+              {strings.noMatch}
+            </Text>
+          </Box>
         )}
       </ListContainer>
     </Stack>

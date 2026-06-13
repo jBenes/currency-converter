@@ -1,5 +1,12 @@
 import styled from 'styled-components'
-import { Stack, Input, FieldRow, FlagBadge } from '@/components/ui'
+import {
+  Stack,
+  Input,
+  FieldRow,
+  FlagBadge,
+  Label,
+  StatusDot,
+} from '@/components/ui'
 import type { Theme } from '@/theme'
 import { formatRate } from '@/lib/money'
 import { strings } from '@/config'
@@ -18,16 +25,6 @@ const StickyRegion = styled.div`
     `${theme.space[4]}px ${theme.space[5]}px ${theme.space[4]}px`};
 `
 
-const Label = styled.label`
-  display: block;
-  font-size: ${({ theme }) => theme.fontSize.xs};
-  font-weight: ${({ theme }) => theme.fontWeight.semibold};
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.textLabel};
-  margin-bottom: ${({ theme }) => theme.space[2]}px;
-`
-
 const CurrencyTag = styled.span`
   display: flex;
   align-items: center;
@@ -41,12 +38,6 @@ const CurrencyCode = styled.span`
   color: ${({ theme }) => theme.colors.text};
 `
 
-const Divider = styled.div`
-  flex: 1;
-  height: 1px;
-  background: ${({ theme }) => theme.colors.divider};
-`
-
 const RateFooter = styled.div`
   padding-top: ${({ theme }) => theme.space[4]}px;
   display: flex;
@@ -57,14 +48,6 @@ const RateFooter = styled.div`
   font-weight: ${({ theme }) => theme.fontWeight.semibold};
   font-variant-numeric: tabular-nums;
   color: ${({ theme }) => theme.colors.text};
-`
-
-const Dot = styled.span`
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  border-radius: ${({ theme }) => theme.radius.pill};
-  background: ${({ theme }) => theme.colors.success};
 `
 
 const ResultRow = styled.div`
@@ -109,7 +92,7 @@ export function ConverterRegion({
 
   return (
     <StickyRegion>
-      <Stack gap={1}>
+      <Stack gap={2}>
         <div>
           <Label htmlFor="czk-input">{strings.labelFrom}</Label>
           <FieldRow>
@@ -127,8 +110,6 @@ export function ConverterRegion({
             />
           </FieldRow>
         </div>
-
-        <Divider />
 
         <div>
           <Label as="span" id="result-label">
@@ -151,7 +132,7 @@ export function ConverterRegion({
       </Stack>
 
       <RateFooter>
-        <Dot />1 {currency.code} = {formatRate(normalizedRate)} CZK
+        <StatusDot />1 {currency.code} = {formatRate(normalizedRate)} CZK
       </RateFooter>
     </StickyRegion>
   )
