@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-Guidance for Claude Code working on this repository. Read this fully before each task and follow it on every change.
+Guidance for AI agent working on this repository. Read this fully before each task and follow it on every change.
 
 ## Project
 
@@ -9,7 +9,7 @@ A currency converter web app. On load it fetches the latest CZK exchange rates f
 ## Commands
 
 ```
-npm run dev         # start the Vite dev server (includes the CNB proxy, see Deployment)
+npm run dev          # start the Vite dev server (includes the CNB proxy, see Deployment)
 npm run build        # production build
 npm run preview      # serve the production build locally
 npm run typecheck    # tsc --noEmit (strict)
@@ -50,11 +50,13 @@ src/
 ```
 
 Three tiers, kept strictly separate:
+
 1. **UI primitives** (`components/ui`) — pure, presentational, theme-driven. No business knowledge, no data fetching.
 2. **Business components** (`features/*`) — compose primitives and consume hooks. App-specific.
 3. **Hooks** (`features/*/use*.ts`) — hold logic and data access; components stay declarative.
 
 Rules:
+
 - Composition files (`App`, layouts, pages) only assemble components — no inline styles, no logic.
 - No inline styling anywhere. All styling via styled-components against semantic tokens.
 - Event handlers are thin: they call a function/hook, they do not contain logic. Low-level UI components contain no business logic.
