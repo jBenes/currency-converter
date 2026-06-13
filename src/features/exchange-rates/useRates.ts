@@ -15,6 +15,8 @@ export function useRates() {
     staleTime: Infinity,
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
+    refetchInterval: ({ state }) =>
+      state.status === 'error' ? 30_000 : false,
   })
 
   const currencies = useMemo(
