@@ -4,7 +4,6 @@ import {
   fontSize,
   fontWeight,
   lineHeight,
-  breakpoints,
   palette,
   shadow,
 } from './tokens'
@@ -20,7 +19,6 @@ function createTheme(mode: 'light' | 'dark') {
     fontSize,
     fontWeight,
     lineHeight,
-    breakpoints,
 
     colors: {
       page: p.page,
@@ -29,7 +27,6 @@ function createTheme(mode: 'light' | 'dark') {
       surfaceBorder: p.cardBorder,
       surfaceField: p.field,
       surfaceFieldBorder: p.fieldBorder,
-      surfaceDropdown: p.dropdown,
       surfaceSelected: p.selected,
       text: p.text,
       textMuted: p.muted,
@@ -42,7 +39,6 @@ function createTheme(mode: 'light' | 'dark') {
       error: p.error,
       errorBg: p.errorBg,
       errorBorder: p.errorBorder,
-      white: p.white,
     },
 
     size: {
@@ -52,6 +48,7 @@ function createTheme(mode: 'light' | 'dark') {
     layout: {
       headerHeight: 72,
       containerMaxWidth: 1080,
+      contentMaxWidth: 480,
     },
 
     header: {
@@ -67,7 +64,6 @@ function createTheme(mode: 'light' | 'dark') {
 
     shadow: {
       card: s.card,
-      dropdown: s.dropdown,
       header: s.header,
     },
   } as const

@@ -20,7 +20,7 @@ const Main = styled.main`
 
 const ContentColumn = styled.div`
   width: 100%;
-  max-width: 480px;
+  max-width: ${({ theme }) => theme.layout.contentMaxWidth}px;
 `
 
 interface PageLayoutProps {

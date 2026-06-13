@@ -4,7 +4,6 @@ export const radius = {
   sm: '8px',
   md: '10px',
   lg: '12px',
-  xl: '14px',
   '2xl': '16px',
   pill: '9999px',
 } as const
@@ -16,26 +15,18 @@ export const fontSize = {
   base: '16px',
   lg: '19px',
   xl: '26px',
-  '2xl': '30px',
 } as const
 
 export const fontWeight = {
-  regular: 400,
   medium: 500,
   semibold: 600,
   bold: 700,
-  extrabold: 800,
 } as const
 
 export const lineHeight = {
   tight: 1.2,
   normal: 1.5,
   relaxed: 1.6,
-} as const
-
-export const breakpoints = {
-  tablet: '640px',
-  desktop: '1024px',
 } as const
 
 export const palette = {
@@ -52,14 +43,12 @@ export const palette = {
     badge: '#EAF1FB',
     accent: '#134B8E',
     divider: '#ECF0F6',
-    dropdown: '#FFFFFF',
     subtle: '#8794A8',
     selected: '#f7f9fc',
     success: '#2E9E6B',
     error: '#D93025',
     errorBg: '#FEF0EF',
     errorBorder: '#FACDC8',
-    white: '#FFFFFF',
   },
   dark: {
     page: '#0C1421',
@@ -74,26 +63,22 @@ export const palette = {
     badge: '#1C2C49',
     accent: '#6BA6EC',
     divider: '#243149',
-    dropdown: '#16223A',
     subtle: '#73839B',
     selected: '#1B2A45',
     success: '#2E9E6B',
     error: '#F28B82',
     errorBg: '#2D1618',
     errorBorder: '#5C2B2E',
-    white: '#FFFFFF',
   },
 } as const
 
 export const shadow = {
   light: {
     card: '0 1px 2px rgba(20,49,89,0.04), 0 14px 40px -18px rgba(20,49,89,0.22)',
-    dropdown: '0 20px 48px -16px rgba(20,49,89,0.3)',
     header: 'inset 0 -1px 0 rgba(255,255,255,0.08), 0 1px 0 rgba(13,40,82,0.4)',
   },
   dark: {
     card: '0 1px 2px rgba(0,0,0,0.4), 0 18px 44px -18px rgba(0,0,0,0.7)',
-    dropdown: '0 22px 50px -16px rgba(0,0,0,0.75)',
     header: 'inset 0 -1px 0 rgba(255,255,255,0.06), 0 1px 0 rgba(0,0,0,0.4)',
   },
 } as const
