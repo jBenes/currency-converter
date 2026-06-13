@@ -108,7 +108,7 @@ Rules:
 
 - Amount fields: `inputMode="decimal"` (correct mobile keyboard), **not** `type="number"` (avoids `e`/`+`/`-`, scroll-wheel mutation, locale comma/dot issues).
 - Sanitize to digits + a single `.`. Empty value → treat as 0 in the calc. Use `placeholder="0"` with an empty stored value — do **not** store a literal 0 or clear-on-focus.
-- Conversion is **bidirectional**: single source of truth `{ amount, currency, lastEdited }`; derive the opposite field. Never store both amounts and keep them in sync.
+- Conversion is **one-directional** (CZK → selected currency). The CZK input is the only source of truth; the target amount is derived (`toForeign`) and read-only.
 
 ## Currency select
 

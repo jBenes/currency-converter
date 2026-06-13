@@ -9,6 +9,7 @@ const Badge = styled.span<{ $size: number }>`
   height: ${({ $size }) => $size}px;
   border-radius: ${({ theme }) => theme.radius.pill};
   background: ${({ theme }) => theme.colors.badgeBg};
+  border: 1px solid ${({ theme }) => theme.colors.surfaceBorder};
   overflow: hidden;
   flex-shrink: 0;
 `
@@ -36,7 +37,11 @@ export function FlagBadge({ flagCode, fallback, size = 36 }: FlagBadgeProps) {
 
   return (
     <Badge $size={size} aria-hidden="true">
-      {url ? <FlagImg src={url} alt="" /> : <FallbackText>{fallback}</FallbackText>}
+      {url ? (
+        <FlagImg src={url} alt="" />
+      ) : (
+        <FallbackText>{fallback}</FallbackText>
+      )}
     </Badge>
   )
 }

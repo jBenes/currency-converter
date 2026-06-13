@@ -1,5 +1,5 @@
 export type { Rate, ExchangeRates } from './types'
-export { toForeign, toCzk } from './convert'
+export { toForeign } from './convert'
 export { fetchRates } from './client'
 export { useRates } from './useRates'
 export {

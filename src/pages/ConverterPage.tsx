@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react'
-import styled from 'styled-components'
 import { PageLayout } from '@/layouts'
-import { Heading, Text, Stack, Button } from '@/components/ui'
+import { Heading, Text, Stack, Button, Box } from '@/components/ui'
 import { strings } from '@/config'
 import {
   useRates,
@@ -9,21 +8,9 @@ import {
   RatesList,
   ConverterRegion,
 } from '@/features/exchange-rates'
+import { useConverter } from '@/features/exchange-rates/useConverter'
 import type { Rate } from '@/features/exchange-rates'
 
-const Disclaimer = styled(Text).attrs({ variant: 'subtle' as const })`
-  max-width: 400px;
-  text-align: center;
-`
-
-const ErrorContainer = styled.div`
-  text-align: center;
-  padding: ${({ theme }) => theme.space[5]}px 0;
-`
-
-const DateLine = styled(Text).attrs({ variant: 'subtle' as const })`
-  text-align: center;
-`
 
 export function ConverterPage() {
   const { data, isLoading, isError, error, refetch, isFetching } = useRates()
@@ -43,31 +30,29 @@ export function ConverterPage() {
   const selectedCode =
     userSelectedCode && currencies.some((c) => c.code === userSelectedCode)
       ? userSelectedCode
-      : currencies[0]?.code ?? ''
+      : (currencies[0]?.code ?? '')
 
   const selectedCurrency = currencies.find((c) => c.code === selectedCode)
   const selectedRate = selectedCode ? ratesByCode.get(selectedCode) : undefined
 
+  const [czkRaw, setCzkRaw] = useState('')
+  const converter = useConverter(selectedRate, czkRaw, setCzkRaw)
+
   return (
     <PageLayout>
-      <Stack gap={5} align="center">
+      <Stack gap={5}>
         <Stack gap={1} align="center">
-          <Heading as="h1" size="lg">
-            {strings.pageTitle}
-          </Heading>
+          <Heading as="h1">{strings.pageTitle}</Heading>
           <Text variant="muted">{strings.pageSubtitle}</Text>
         </Stack>
 
-        {isLoading && !data && (
-          <Text variant="muted">{strings.loading}</Text>
-        )}
+        {isLoading && !data && <Text variant="muted">{strings.loading}</Text>}
 
         {isError && !data && (
-          <ErrorContainer role="alert">
+          <Box py={5} role="alert">
             <Stack gap={3} align="center">
-              <Text variant="muted">
-                {strings.error}{' '}
-                {error instanceof Error ? error.message : ''}
+              <Text variant="muted" align="center">
+                {strings.error} {error instanceof Error ? error.message : ''}
               </Text>
               <Button
                 variant="primary"
@@ -77,7 +62,7 @@ export function ConverterPage() {
                 {strings.retry}
               </Button>
             </Stack>
-          </ErrorContainer>
+          </Box>
         )}
 
         {data && currencies.length === 0 && (
@@ -89,6 +74,9 @@ export function ConverterPage() {
             <ConverterRegion
               currency={selectedCurrency}
               rate={selectedRate}
+              czkValue={converter.czkValue}
+              foreignValue={converter.foreignValue}
+              onCzkChange={converter.onCzkChange}
             />
             <RatesList
               currencies={currencies}
@@ -97,14 +85,12 @@ export function ConverterPage() {
               onSelect={setUserSelectedCode}
             />
             {data.dateText && (
-              <DateLine>
+              <Text variant="subtle" align="center">
                 {strings.ratesAsOf} {data.dateText}
-              </DateLine>
+              </Text>
             )}
           </>
         )}
-
-        <Disclaimer>{strings.disclaimer}</Disclaimer>
       </Stack>
     </PageLayout>
   )

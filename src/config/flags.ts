@@ -1,3 +1,4 @@
+import czFlag from '@/assets/flags/cz.svg'
 import euFlag from '@/assets/flags/eu.svg'
 import usFlag from '@/assets/flags/us.svg'
 import gbFlag from '@/assets/flags/gb.svg'
@@ -29,6 +30,7 @@ import thFlag from '@/assets/flags/th.svg'
 import trFlag from '@/assets/flags/tr.svg'
 
 export const flagUrls: Record<string, string> = {
+  cz: czFlag,
   eu: euFlag,
   us: usFlag,
   gb: gbFlag,

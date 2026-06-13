@@ -64,8 +64,6 @@ export function RatesList({
         />
       </FieldRow>
 
-      <Text variant="subtle">{strings.listHint}</Text>
-
       <ListContainer role="listbox" aria-label="Available currencies">
         {filtered.map((currency) => {
           const rate = ratesByCode.get(currency.code)

@@ -15,7 +15,7 @@ const HeaderInner = styled.div`
   height: ${({ theme }) => theme.layout.headerHeight}px;
   display: flex;
   align-items: center;
-  gap: ${({ theme }) => theme.space[3]}px;
+  justify-content: space-between;
 `
 
 const BrandMark = styled.span`
@@ -27,6 +27,12 @@ const BrandMark = styled.span`
   color: ${({ theme }) => theme.header.text};
 `
 
+const Brand = styled.span`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.space[3]}px;
+`
+
 const BrandName = styled.span`
   color: ${({ theme }) => theme.header.text};
   font-size: ${({ theme }) => theme.fontSize.lg};
@@ -34,27 +40,16 @@ const BrandName = styled.span`
   letter-spacing: -0.01em;
 `
 
-const Tagline = styled.span`
-  margin-left: auto;
-  color: ${({ theme }) => theme.header.textMuted};
-  font-size: ${({ theme }) => theme.fontSize.sm};
-  font-weight: ${({ theme }) => theme.fontWeight.medium};
-  letter-spacing: 0.02em;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    display: none;
-  }
-`
-
 export function Header() {
   return (
     <StyledHeader>
       <HeaderInner>
-        <BrandMark>
-          <Logo size={32} />
-        </BrandMark>
-        <BrandName>{strings.brandName}</BrandName>
-        <Tagline>{strings.headerTagline}</Tagline>
+        <Brand>
+          <BrandMark>
+            <Logo size={32} />
+          </BrandMark>
+          <BrandName>{strings.brandName}</BrandName>
+        </Brand>
         <ThemeToggle />
       </HeaderInner>
     </StyledHeader>
