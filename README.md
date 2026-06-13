@@ -54,6 +54,10 @@ api/
   rates.ts         # Vercel serverless proxy (CNB pass-through)
 ```
 
+## Configuration
+
+To add or remove currencies, edit `ALLOWED_CURRENCIES` in `src/config/currencies.ts`.
+
 ## Credits
 
 Flag SVGs sourced from [flag-icons](https://github.com/lipis/flag-icons) (public domain).
