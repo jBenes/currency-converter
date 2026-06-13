@@ -27,8 +27,8 @@ const variantStyles = {
     background: transparent;
     color: ${({ theme }) => theme.colors.text};
     padding: ${({ theme }) => `${theme.space[2]}px`};
-    width: 38px;
-    height: 38px;
+    width: ${({ theme }) => theme.size.control}px;
+    height: ${({ theme }) => theme.size.control}px;
     display: inline-flex;
     align-items: center;
     justify-content: center;

@@ -1,3 +1,4 @@
+export { Logo } from './Logo'
 export { Stack } from './Stack'
 export { Cluster } from './Cluster'
 export { Box } from './Box'

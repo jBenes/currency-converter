@@ -40,9 +40,13 @@ Feature-oriented, not type-oriented. Group by business module first, then by tie
 ```
 src/
   app/                 # App, providers (QueryClient, Theme, GlobalStyle) — composition only
+  pages/               # page-level compositions (ConverterPage)
   features/
     exchange-rates/    # the one business module: api, hooks, components, types
-  components/ui/        # pure design primitives (Button, Input, Card, Stack, Heading...)
+  components/
+    ui/                # pure design primitives (Button, Input, Card, Stack, Heading...)
+    ui/icons/          # reusable SVG icon components (SunIcon, MoonIcon, …)
+    ThemeToggle.tsx     # shared behavioural components (not pure primitives, not feature-specific)
   layouts/             # Header, PageLayout
   theme/               # design tokens (primitive + semantic), ThemeProvider, light/dark
   config/              # brand/strings, currency allow-list, locale, constants
@@ -58,6 +62,7 @@ Three tiers, kept strictly separate:
 Rules:
 
 - Composition files (`App`, layouts, pages) only assemble components — no inline styles, no logic.
+- Composition and page files (`app/`, `pages/`, and layout assembly) must contain zero `style={}` props. If a value isn't expressible through a primitive's props or a token, extend the primitive or add a token — never inline it.
 - No inline styling anywhere. All styling via styled-components against semantic tokens.
 - Event handlers are thin: they call a function/hook, they do not contain logic. Low-level UI components contain no business logic.
 - Extract constants/config (brand name, locale, currency allow-list) — never hardcode these inline.

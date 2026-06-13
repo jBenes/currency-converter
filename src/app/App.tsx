@@ -1,10 +1,10 @@
 import { Providers } from './Providers'
-import { Showcase } from './Showcase'
+import { ConverterPage } from '@/pages/ConverterPage'
 
 export function App() {
   return (
     <Providers>
-      <Showcase />
+      <ConverterPage />
     </Providers>
   )
 }

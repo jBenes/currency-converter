@@ -42,9 +42,30 @@ function createTheme(mode: 'light' | 'dark') {
       white: p.white,
     },
 
+    size: {
+      control: 38,
+    },
+
+    layout: {
+      headerHeight: 72,
+      containerMaxWidth: 1080,
+    },
+
+    header: {
+      text: '#FFFFFF',
+      textMuted: 'rgba(255,255,255,0.72)',
+      buttonBg: 'rgba(255,255,255,0.10)',
+      buttonBorder: 'rgba(255,255,255,0.22)',
+      buttonHoverBg:
+        mode === 'light'
+          ? 'rgba(255,255,255,0.18)'
+          : 'rgba(255,255,255,0.14)',
+    },
+
     shadow: {
       card: s.card,
       dropdown: s.dropdown,
+      header: s.header,
     },
   } as const
 }

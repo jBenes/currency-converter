@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 
 type TextVariant = 'body' | 'muted' | 'label' | 'subtle'
+type TextAlign = 'left' | 'center' | 'right'
 
 const variantStyles = {
   body: css`
@@ -21,14 +22,17 @@ const variantStyles = {
   subtle: css`
     font-size: ${({ theme }) => theme.fontSize.sm};
     color: ${({ theme }) => theme.colors.textSubtle};
+    line-height: ${({ theme }) => theme.lineHeight.relaxed};
   `,
 }
 
 interface TextProps {
   variant?: TextVariant
+  align?: TextAlign
 }
 
 export const Text = styled.span<TextProps>`
   line-height: ${({ theme }) => theme.lineHeight.normal};
   ${({ variant = 'body' }) => variantStyles[variant]}
+  ${({ align }) => align && `text-align: ${align};`}
 `
