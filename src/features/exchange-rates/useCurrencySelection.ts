@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import type { Rate } from './types'
-import type { CurrencyInfo } from './currencies'
+import type { CurrencyCode, CurrencyInfo } from './currencies'
 
 export function useCurrencySelection(
   currencies: CurrencyInfo[],
   ratesByCode: Map<string, Rate>,
 ) {
-  const [userSelectedCode, setUserSelectedCode] = useState<string | null>(null)
+  const [userSelectedCode, setUserSelectedCode] = useState<CurrencyCode | null>(null)
 
-  const selectedCode =
+  const selectedCode: CurrencyCode | '' =
     userSelectedCode && currencies.some((c) => c.code === userSelectedCode)
       ? userSelectedCode
       : (currencies[0]?.code ?? '')

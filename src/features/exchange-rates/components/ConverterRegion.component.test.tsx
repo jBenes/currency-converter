@@ -4,12 +4,13 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
 import { lightTheme } from '@/theme'
 import { ConverterRegion } from './ConverterRegion'
+import type { CurrencyInfo } from '../currencies'
 
 vi.mock('@/config/flags', () => ({
   flagUrls: {},
 }))
 
-const eurCurrency = {
+const eurCurrency: CurrencyInfo = {
   code: 'EUR',
   name: 'Euro',
   symbol: '\u20AC',
@@ -25,7 +26,7 @@ const eurRate = {
   rate: 24.875,
 }
 
-const jpyCurrency = {
+const jpyCurrency: CurrencyInfo = {
   code: 'JPY',
   name: 'Japanese Yen',
   symbol: '\u00A5',

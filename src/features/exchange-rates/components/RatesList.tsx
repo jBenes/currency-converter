@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Stack, Text, Input, FieldRow } from '@/components/ui'
 import { SearchIcon } from '@/components/ui/icons'
 import { strings } from '@/config'
-import type { CurrencyInfo } from '../currencies'
+import type { CurrencyCode, CurrencyInfo } from '../currencies'
 import type { Rate } from '../types'
 import { RateListItem } from './RateListItem'
 
@@ -27,8 +27,8 @@ const EmptyMessage = styled(Text).attrs({ variant: 'subtle' as const })`
 interface RatesListProps {
   currencies: CurrencyInfo[]
   ratesByCode: Map<string, Rate>
-  selectedCode: string
-  onSelect: (code: string) => void
+  selectedCode: CurrencyCode | ''
+  onSelect: (code: CurrencyCode | null) => void
 }
 
 export function RatesList({
