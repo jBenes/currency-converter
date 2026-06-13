@@ -56,6 +56,9 @@ export const palette = {
     subtle: '#8794A8',
     selected: '#f7f9fc',
     success: '#2E9E6B',
+    error: '#D93025',
+    errorBg: '#FEF0EF',
+    errorBorder: '#FACDC8',
     white: '#FFFFFF',
   },
   dark: {
@@ -75,6 +78,9 @@ export const palette = {
     subtle: '#73839B',
     selected: '#1B2A45',
     success: '#2E9E6B',
+    error: '#F28B82',
+    errorBg: '#2D1618',
+    errorBorder: '#5C2B2E',
     white: '#FFFFFF',
   },
 } as const

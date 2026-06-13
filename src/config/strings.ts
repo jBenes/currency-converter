@@ -5,7 +5,7 @@ export const strings = {
   filterPlaceholder: 'Search currency...',
   listHint: 'Tap a currency to convert',
   loading: 'Loading rates...',
-  error: 'Failed to load exchange rates.',
+  error: 'Rates are currently unavailable. Retrying...',
   retry: 'Retry',
   noRates: 'No rates available.',
   noMatch: 'No currencies match your search.',

@@ -39,6 +39,9 @@ function createTheme(mode: 'light' | 'dark') {
       badgeBg: p.badge,
       divider: p.divider,
       success: p.success,
+      error: p.error,
+      errorBg: p.errorBg,
+      errorBorder: p.errorBorder,
       white: p.white,
     },
 

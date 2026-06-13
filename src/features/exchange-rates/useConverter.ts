@@ -1,4 +1,4 @@
-import { useMemo, useCallback } from 'react'
+import { useMemo, useState, useCallback } from 'react'
 import type { Rate } from './types'
 import { toForeign } from './convert'
 import { formatMoney } from '@/lib/money'
@@ -29,17 +29,12 @@ interface ConverterResult {
   onCzkChange: (value: string) => void
 }
 
-export function useConverter(
-  rate: Rate | undefined,
-  czkRaw: string,
-  setCzkRaw: (value: string) => void,
-): ConverterResult {
-  const onCzkChange = useCallback(
-    (value: string) => {
-      setCzkRaw(sanitize(value))
-    },
-    [setCzkRaw],
-  )
+export function useConverter(rate: Rate | undefined): ConverterResult {
+  const [czkRaw, setCzkRaw] = useState('')
+
+  const onCzkChange = useCallback((value: string) => {
+    setCzkRaw(sanitize(value))
+  }, [])
 
   const foreignValue = useMemo(() => {
     if (!rate || czkRaw === '') return ''
