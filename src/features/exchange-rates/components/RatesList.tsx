@@ -49,7 +49,7 @@ export function RatesList({
     <Stack gap={3}>
       <FieldRow>
         <SearchIconWrapper>
-          <SearchIcon size={16} />
+          <SearchIcon size={16} aria-hidden="true" />
         </SearchIconWrapper>
         <Input
           value={filter}
@@ -59,7 +59,7 @@ export function RatesList({
         />
       </FieldRow>
 
-      <ListContainer role="listbox" aria-label="Available currencies">
+      <ListContainer role="list" aria-label="Available currencies">
         {filtered.map((currency) => {
           const rate = ratesByCode.get(currency.code)
           if (!rate) return null

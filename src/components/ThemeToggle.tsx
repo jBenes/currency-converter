@@ -25,8 +25,8 @@ export function ThemeToggle() {
   const { mode, toggleMode } = useColorMode()
 
   return (
-    <ToggleButton onClick={toggleMode} title="Toggle theme">
-      {mode === 'dark' ? <SunIcon /> : <MoonIcon />}
+    <ToggleButton onClick={toggleMode} aria-label="Toggle theme">
+      {mode === 'dark' ? <SunIcon aria-hidden="true" /> : <MoonIcon aria-hidden="true" />}
     </ToggleButton>
   )
 }
