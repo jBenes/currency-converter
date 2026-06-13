@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { PageLayout } from '@/layouts'
 import { Heading, Text, Stack, Alert } from '@/components/ui'
 import { strings } from '@/config'
@@ -16,16 +17,18 @@ export function ConverterPage() {
     useCurrencySelection(currencies, ratesByCode)
   const converter = useConverter(selectedRate)
 
-  if (isError && !data) {
-    logger.error('Failed to load rates', error)
-  }
+  useEffect(() => {
+    if (isError && error) {
+      logger.error('Failed to load rates', error)
+    }
+  }, [isError, error])
 
   return (
     <PageLayout>
       <Stack gap={5}>
         <Stack gap={1} align="center">
           <Heading as="h1">{strings.pageTitle}</Heading>
-          <Text variant="muted">{strings.pageSubtitle}</Text>
+          <Text variant="muted" align="center">{strings.pageSubtitle}</Text>
         </Stack>
 
         {isError && !data && <Alert>{strings.error}</Alert>}
