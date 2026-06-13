@@ -2,26 +2,7 @@ import { useMemo, useState, useCallback } from 'react'
 import type { Rate } from './types'
 import { toForeign } from './convert'
 import { formatMoney } from '@/lib/money'
-
-function sanitize(value: string): string {
-  let result = ''
-  let hasDot = false
-  for (const ch of value) {
-    if (ch >= '0' && ch <= '9') {
-      result += ch
-    } else if (ch === '.' && !hasDot) {
-      hasDot = true
-      result += ch
-    }
-  }
-  return result
-}
-
-function parseAmount(raw: string): number {
-  if (!raw) return 0
-  const n = parseFloat(raw)
-  return isFinite(n) ? n : 0
-}
+import { sanitizeAmount, parseAmount } from '@/lib/input'
 
 interface ConverterResult {
   czkValue: string
@@ -33,7 +14,7 @@ export function useConverter(rate: Rate | undefined): ConverterResult {
   const [czkRaw, setCzkRaw] = useState('')
 
   const onCzkChange = useCallback((value: string) => {
-    setCzkRaw(sanitize(value))
+    setCzkRaw(sanitizeAmount(value))
   }, [])
 
   const foreignValue = useMemo(() => {
