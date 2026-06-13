@@ -19,10 +19,10 @@ test.describe('with mocked rates', () => {
   test('rates list renders with multiple currencies', async ({ page }) => {
     await page.goto('/')
 
-    await expect(page.getByRole('button', { name: /Euro/ })).toBeVisible()
-    await expect(page.getByRole('button', { name: /US Dollar/ })).toBeVisible()
-    await expect(page.getByRole('button', { name: /British Pound/ })).toBeVisible()
-    await expect(page.getByRole('button', { name: /Japanese Yen/ })).toBeVisible()
+    await expect(page.getByRole('listitem', { name: /Euro/ })).toBeVisible()
+    await expect(page.getByRole('listitem', { name: /US Dollar/ })).toBeVisible()
+    await expect(page.getByRole('listitem', { name: /British Pound/ })).toBeVisible()
+    await expect(page.getByRole('listitem', { name: /Japanese Yen/ })).toBeVisible()
   })
 
   test('CZK conversion works including per-100 currency (JPY)', async ({
@@ -37,7 +37,7 @@ test.describe('with mocked rates', () => {
     await expect(page.getByText('40.20')).toBeVisible()
 
     // Click JPY row — per-100 currency
-    await page.getByRole('button', { name: /Japanese Yen/ }).click()
+    await page.getByRole('listitem', { name: /Japanese Yen/ }).click()
 
     // 1000 CZK * 100 / 15.987 = 6,255.08
     await expect(page.getByText('6,255.08')).toBeVisible()
@@ -51,7 +51,7 @@ test.describe('with mocked rates', () => {
     const czkInput = page.getByLabel(/from/i)
     await czkInput.fill('100')
 
-    await page.getByRole('button', { name: /British Pound/ }).click()
+    await page.getByRole('listitem', { name: /British Pound/ }).click()
 
     // 100 * 1 / 28.000 = 3.57
     await expect(page.getByText('3.57')).toBeVisible()
@@ -63,12 +63,12 @@ test.describe('with mocked rates', () => {
     const filter = page.getByPlaceholder(/search currency/i)
     await filter.fill('eur')
 
-    await expect(page.getByRole('button', { name: /Euro/ })).toBeVisible()
+    await expect(page.getByRole('listitem', { name: /Euro/ })).toBeVisible()
     await expect(
-      page.getByRole('button', { name: /US Dollar/ }),
+      page.getByRole('listitem', { name: /US Dollar/ }),
     ).not.toBeVisible()
     await expect(
-      page.getByRole('button', { name: /Japanese Yen/ }),
+      page.getByRole('listitem', { name: /Japanese Yen/ }),
     ).not.toBeVisible()
   })
 
@@ -76,7 +76,7 @@ test.describe('with mocked rates', () => {
     await page.setViewportSize({ width: 375, height: 667 })
     await page.goto('/')
 
-    await expect(page.getByRole('button', { name: /Euro/ })).toBeVisible()
+    await expect(page.getByRole('listitem', { name: /Euro/ })).toBeVisible()
 
     const body = page.locator('body')
     const box = await body.boundingBox()

@@ -20,7 +20,7 @@ test('production app loads real rates', async ({ page }) => {
   ).toBeVisible({ timeout: 10000 })
 
   // Verify the rates list has multiple entries
-  const buttons = page.getByRole('listbox').getByRole('button')
+  const buttons = page.getByRole('list').getByRole('button')
   await expect(buttons.first()).toBeVisible()
   expect(await buttons.count()).toBeGreaterThan(5)
 })
