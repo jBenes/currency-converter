@@ -60,11 +60,13 @@ describe('RatesList', () => {
     expect(screen.getByText(/0\.1599 CZK/)).toBeInTheDocument()
   })
 
-  it('renders the list container', () => {
+  it('renders flag fallback symbols when no flag URLs available', () => {
     renderList()
 
-    const list = screen.getByRole('list')
-    expect(list).toBeInTheDocument()
+    // Flag URLs are mocked as empty, so fallback symbols render
+    expect(screen.getByText('\u20AC')).toBeInTheDocument() // EUR €
+    expect(screen.getByText('$')).toBeInTheDocument() // USD
+    expect(screen.getByText('\u00A5')).toBeInTheDocument() // JPY ¥
   })
 
   it('calls onSelect when a row is clicked', () => {

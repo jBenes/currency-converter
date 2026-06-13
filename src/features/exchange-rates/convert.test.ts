@@ -15,6 +15,13 @@ describe('toForeign', () => {
     expect(result).toBeCloseTo(6255.08, 0)
   })
 
+  it('converts CZK to a per-1000 currency correctly', () => {
+    const rate = { amount: 1000, rate: 1.169 } // IDR
+    // 1000 CZK → 1000 * 1000 / 1.169 ≈ 855,431.99
+    const result = toForeign(1000, rate)
+    expect(result).toBeCloseTo(855432, -1)
+  })
+
   it('handles zero CZK', () => {
     expect(toForeign(0, { amount: 1, rate: 24.875 })).toBe(0)
   })
