@@ -9,4 +9,14 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
     },
   },
+  server: {
+    proxy: {
+      '/api/rates': {
+        target:
+          'https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt',
+        changeOrigin: true,
+        rewrite: () => '',
+      },
+    },
+  },
 })

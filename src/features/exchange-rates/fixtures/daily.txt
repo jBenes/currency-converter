@@ -1,0 +1,9 @@
+13.Jun.2026  #113
+Country|Currency|Amount|Code|Rate
+Australia|dollar|1|AUD|14.123
+Denmark|krone|1|DKK|3.456
+EMU|euro|1|EUR|24.875
+Hungary|forint|100|HUF|6.234
+Japan|yen|100|JPY|15.987
+United Kingdom|pound|1|GBP|29.123
+USA|dollar|1|USD|22.456
