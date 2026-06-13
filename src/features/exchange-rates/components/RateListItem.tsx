@@ -70,7 +70,8 @@ export function RateListItem({
     <Row
       $selected={selected}
       onClick={onSelect}
-      aria-pressed={selected}
+      role="listitem"
+      aria-current={selected || undefined}
       aria-label={`${currency.name} (${currency.code})`}
     >
       <FlagBadge flagCode={currency.flag} fallback={currency.symbol} />

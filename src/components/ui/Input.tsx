@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import type { InputHTMLAttributes } from 'react'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  numeric?: boolean
+  $numeric?: boolean
 }
 
 const numericStyles = css`
@@ -30,9 +30,5 @@ export const Input = styled.input.attrs<InputProps>((props) => ({
     color: ${({ theme }) => theme.colors.textSubtle};
   }
 
-  &:focus-visible {
-    outline: none;
-  }
-
-  ${({ numeric }) => numeric && numericStyles}
+  ${({ $numeric }) => $numeric && numericStyles}
 `

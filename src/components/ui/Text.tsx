@@ -26,13 +26,29 @@ const variantStyles = {
   `,
 }
 
-interface TextProps {
-  variant?: TextVariant
-  align?: TextAlign
+interface TextStyledProps {
+  $variant?: TextVariant
+  $align?: TextAlign
 }
 
-export const Text = styled.span<TextProps>`
+const TextStyled = styled.span<TextStyledProps>`
   line-height: ${({ theme }) => theme.lineHeight.normal};
-  ${({ variant = 'body' }) => variantStyles[variant]}
-  ${({ align }) => align && `text-align: ${align};`}
+  ${({ $variant = 'body' }) => variantStyles[$variant]}
+  ${({ $align }) => $align && `text-align: ${$align};`}
 `
+
+interface TextComponentProps {
+  variant?: TextVariant
+  align?: TextAlign
+  children?: React.ReactNode
+  className?: string
+  as?: React.ElementType
+}
+
+export function Text({ variant, align, children, className, as }: TextComponentProps) {
+  return (
+    <TextStyled $variant={variant} $align={align} className={className} as={as}>
+      {children}
+    </TextStyled>
+  )
+}

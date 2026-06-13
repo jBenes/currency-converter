@@ -42,7 +42,7 @@ const RateFooter = styled.div`
   padding-top: ${({ theme }) => theme.space[4]}px;
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: flex-start;
   gap: ${({ theme }) => theme.space[3]}px;
   font-size: ${({ theme }) => theme.fontSize.sm};
   font-weight: ${({ theme }) => theme.fontWeight.semibold};
@@ -102,7 +102,7 @@ export function ConverterRegion({
             </CurrencyTag>
             <Input
               id="czk-input"
-              numeric
+              $numeric
               inputMode="decimal"
               placeholder="0"
               value={czkValue}
