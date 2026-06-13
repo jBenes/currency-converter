@@ -22,7 +22,7 @@ const SearchIconWrapper = styled.span`
 interface RatesListProps {
   currencies: CurrencyInfo[]
   ratesByCode: Map<string, Rate>
-  selectedCode: CurrencyCode | ''
+  selectedCode: CurrencyCode | null
   onSelect: (code: CurrencyCode | null) => void
 }
 

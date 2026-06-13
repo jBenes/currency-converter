@@ -8,10 +8,10 @@ export function useCurrencySelection(
 ) {
   const [userSelectedCode, setUserSelectedCode] = useState<CurrencyCode | null>(null)
 
-  const selectedCode: CurrencyCode | '' =
+  const selectedCode: CurrencyCode | null =
     userSelectedCode && currencies.some((c) => c.code === userSelectedCode)
       ? userSelectedCode
-      : (currencies[0]?.code ?? '')
+      : (currencies[0]?.code ?? null)
 
   const selectedCurrency = currencies.find((c) => c.code === selectedCode)
   const selectedRate = selectedCode ? ratesByCode.get(selectedCode) : undefined
