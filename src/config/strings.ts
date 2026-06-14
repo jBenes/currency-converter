@@ -1,3 +1,5 @@
+export const LOCALE = 'en-US'
+
 export const strings = {
   brandName: 'Currency Converter',
   pageTitle: 'Convert Czech Koruna',

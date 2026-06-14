@@ -1,4 +1,4 @@
-const LOCALE = 'en-US'
+import { LOCALE } from '@/config/strings'
 
 const defaultFormatter = new Intl.NumberFormat(LOCALE, {
   style: 'decimal',
