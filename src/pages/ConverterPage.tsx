@@ -28,8 +28,18 @@ export function ConverterPage() {
       <Stack gap={5}>
         <Stack gap={1} align="center">
           <Heading as="h1">{strings.pageTitle}</Heading>
-          <Text variant="muted" align="center">{strings.pageSubtitle}</Text>
+          <Text variant="muted" align="center">
+            {strings.pageSubtitle}
+          </Text>
         </Stack>
+
+        <ConverterRegion
+          currency={selectedCurrency}
+          rate={selectedRate}
+          czkValue={converter.czkValue}
+          foreignValue={converter.foreignValue}
+          onCzkChange={converter.onCzkChange}
+        />
 
         {isError && !data && <Alert>{strings.error}</Alert>}
 
@@ -39,13 +49,6 @@ export function ConverterPage() {
 
         {data && selectedCurrency && selectedRate && (
           <>
-            <ConverterRegion
-              currency={selectedCurrency}
-              rate={selectedRate}
-              czkValue={converter.czkValue}
-              foreignValue={converter.foreignValue}
-              onCzkChange={converter.onCzkChange}
-            />
             <RatesList
               currencies={currencies}
               ratesByCode={ratesByCode}

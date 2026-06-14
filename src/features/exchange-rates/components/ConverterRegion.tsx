@@ -1,11 +1,5 @@
 import styled from 'styled-components'
-import {
-  Stack,
-  Input,
-  FieldRow,
-  Label,
-  StatusDot,
-} from '@/components/ui'
+import { Stack, Input, FieldRow, Label, StatusDot } from '@/components/ui'
 import type { Theme } from '@/theme'
 import { formatRate } from '@/lib/money'
 import { strings } from '@/config'
@@ -73,9 +67,25 @@ const ResultValue = styled.span.attrs({
   color: ${({ theme }) => theme.colors.accent};
 `
 
+const PlaceholderBadge = styled.span`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: ${({ theme }) => theme.radius.pill};
+  background: ${({ theme }) => theme.colors.badgeBg};
+  border: 1px solid ${({ theme }) => theme.colors.surfaceBorder};
+  flex-shrink: 0;
+`
+
+const PlaceholderCode = styled(CurrencyCode)`
+  color: ${({ theme }) => theme.colors.textSubtle};
+`
+
 interface ConverterRegionProps {
-  currency: CurrencyInfo
-  rate: Rate
+  currency?: CurrencyInfo
+  rate?: Rate
   czkValue: string
   foreignValue: string
   onCzkChange: (value: string) => void
@@ -88,7 +98,7 @@ export function ConverterRegion({
   foreignValue,
   onCzkChange,
 }: ConverterRegionProps) {
-  const normalizedRate = rate.rate / rate.amount
+  const normalizedRate = rate ? rate.rate / rate.amount : undefined
 
   return (
     <StickyRegion>
@@ -117,23 +127,37 @@ export function ConverterRegion({
           </Label>
           <ResultRow>
             <CurrencyTag>
-              <FlagBadge
-                flagCode={currency.flag}
-                fallback={currency.symbol}
-                size={34}
-              />
-              <CurrencyCode>{currency.code}</CurrencyCode>
+              {currency ? (
+                <FlagBadge
+                  flagCode={currency.flag}
+                  fallback={currency.symbol}
+                  size={34}
+                />
+              ) : (
+                <PlaceholderBadge />
+              )}
+              {currency ? (
+                <CurrencyCode>{currency.code}</CurrencyCode>
+              ) : (
+                <PlaceholderCode>---</PlaceholderCode>
+              )}
             </CurrencyTag>
-            <ResultValue aria-label={`Result in ${currency.code}`}>
+            <ResultValue
+              aria-label={
+                currency ? `Result in ${currency.code}` : 'Conversion result'
+              }
+            >
               {foreignValue || '0'}
             </ResultValue>
           </ResultRow>
         </div>
       </Stack>
 
-      <RateFooter>
-        <StatusDot />1 {currency.code} = {formatRate(normalizedRate)} CZK
-      </RateFooter>
+      {currency && normalizedRate !== undefined && (
+        <RateFooter>
+          <StatusDot />1 {currency.code} = {formatRate(normalizedRate)} CZK
+        </RateFooter>
+      )}
     </StickyRegion>
   )
 }
