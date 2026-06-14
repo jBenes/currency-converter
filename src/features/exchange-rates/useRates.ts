@@ -12,15 +12,14 @@ export function useRates() {
   const query = useQuery({
     queryKey: ['rates'],
     queryFn: fetchRates,
-    staleTime: Infinity,
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
-    refetchInterval: ({ state }) =>
-      state.status === 'error' ? 30_000 : false,
+    refetchInterval: ({ state }) => (state.status === 'error' ? 30_000 : false),
   })
 
   const currencies = useMemo(
-    () => (query.data ? selectAvailableCurrencies(query.data.rates) : EMPTY_CURRENCIES),
+    () =>
+      query.data
+        ? selectAvailableCurrencies(query.data.rates)
+        : EMPTY_CURRENCIES,
     [query.data],
   )
 
